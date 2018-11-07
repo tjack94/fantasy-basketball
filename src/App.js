@@ -13,7 +13,10 @@ class App extends Component {
     }
   }
   selectPlayer(id){
-    nba.stats.playerInfo( {PlayerID: id} ).then(response=> this.setState({currentPlayer: response.playerHeadlineStats[0], showPlayerStats: true}))
+    nba.stats.playerInfo( {PlayerID: id} )
+    .then(response=> {
+      this.setState({currentPlayer: response.playerHeadlineStats[0], showPlayerStats: true})
+    })
   }
   render() {
     const playersList = players.map((player, index)=>{
@@ -23,7 +26,13 @@ class App extends Component {
       </div>
       )
     })
-      const playerStats = this.state.showPlayerStats? <div>Player: {this.state.currentPlayer.playerName} PPG: {this.state.currentPlayer.pts} APG: {this.state.currentPlayer.ast} RPG: {this.state.currentPlayer.reb}</div> : null
+      const playerStats = this.state.showPlayerStats ? (
+      <div>
+        Player: {this.state.currentPlayer.playerName} 
+        PPG: {this.state.currentPlayer.pts} APG: {this.state.currentPlayer.ast} 
+        RPG: {this.state.currentPlayer.reb}
+      </div>
+      ) : null
     
     return (
       <div className="App">
