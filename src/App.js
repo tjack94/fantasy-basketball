@@ -27,7 +27,7 @@ class App extends Component {
       )
     })
       const playerStats = this.state.showPlayerStats ? (
-      <div>
+      <div className='selected-stats'>
         Player: {this.state.currentPlayer.playerName} 
         PPG: {this.state.currentPlayer.pts} APG: {this.state.currentPlayer.ast} 
         RPG: {this.state.currentPlayer.reb}
