@@ -18,6 +18,9 @@ class App extends Component {
       this.setState({currentPlayer: response.playerHeadlineStats[0], showPlayerStats: true})
     })
   }
+  hideStats(){
+    this.setState( { showPlayerStats: false } )
+  }
   render() {
     const playersList = players.map((player, index)=>{
       return (
@@ -28,9 +31,12 @@ class App extends Component {
     })
       const playerStats = this.state.showPlayerStats ? (
       <div className='selected-stats'>
+       <div>
         Player: {this.state.currentPlayer.playerName} 
         PPG: {this.state.currentPlayer.pts} APG: {this.state.currentPlayer.ast} 
         RPG: {this.state.currentPlayer.reb}
+        </div>
+        <button onClick={()=> this.hideStats()}>X</button>
       </div>
       ) : null
     
