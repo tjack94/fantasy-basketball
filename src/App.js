@@ -10,6 +10,8 @@ class App extends Component {
     this.state={
       currentPlayer: null,
       showPlayerStats: false,
+      players: players,
+      search: ''
     }
   }
   selectPlayer(id){
@@ -21,8 +23,17 @@ class App extends Component {
   hideStats(){
     this.setState( { showPlayerStats: false } )
   }
+  searchPlayer(str){
+  
+   const filtered =  players.filter((player)=>{
+    
+      const name = player.lastName + ', ' + player.firstName
+      return name.toLowerCase().includes(str.toLowerCase())
+    })
+    this.setState( { players: filtered } )
+  }
   render() {
-    const playersList = players.map((player, index)=>{
+    const playersList = this.state.players.map((player, index)=>{
       return (
       <div key= {index} onClick={()=> this.selectPlayer(player.playerId)}>
       {player.lastName + ', ' + player.firstName}
@@ -43,6 +54,10 @@ class App extends Component {
     return (
       <div className="App">
       {playerStats}
+      <input
+       placeholder ="Search for a player"
+       onChange ={(e)=> this.searchPlayer(e.target.value) }
+       />
       {playersList}
       </div>
     );
