@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import axios from 'axios'
 import './App.css';
 import { players } from './playersService';
 import nba from 'nba';
@@ -28,7 +29,10 @@ class App extends Component {
 			return name.toLowerCase().includes(str.toLowerCase());
 		});
 		this.setState({ players: filtered });
-	}
+  }
+  addPlayer(){
+    axios.post('api/add-player').then(()=> console.log('player added'))
+  }
 	render() {
 		const playersList = this.state.players.map((player, index) => {
 			return (

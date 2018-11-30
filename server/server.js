@@ -4,6 +4,7 @@ const massive = require('massive')
 const session = require('express-session')
 const cors =require('cors')
 const path = require('path')
+const controller = require('./controller')
 require('dotenv').config()
 
 const app = express()
@@ -24,6 +25,8 @@ app.use(session({
       app.set("db", db)
   })
   .catch(err => console.log(err))
+
+app.post('api/add-player', controller.addPlayer)
 
   const port = process.env.SERVER_PORT || 3002
 
