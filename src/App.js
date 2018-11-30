@@ -31,7 +31,7 @@ class App extends Component {
 		this.setState({ players: filtered });
   }
   addPlayer(){
-    axios.post('api/add-player').then(()=> console.log('player added'))
+    axios.post('/api/add-player').then(()=> console.log('player added'))
   }
 	render() {
 		const playersList = this.state.players.map((player, index) => {
@@ -47,7 +47,7 @@ class App extends Component {
 					Player: {this.state.currentPlayer.playerName}
 					PPG: {this.state.currentPlayer.pts} APG: {this.state.currentPlayer.ast}
           RPG: {this.state.currentPlayer.reb}
-          <button>Add Player</button>
+          <button onClick={()=> this.addPlayer()}>Add Player</button>
 				</div>
 				<button onClick={() => this.hideStats()}>X</button>
 			</div>
