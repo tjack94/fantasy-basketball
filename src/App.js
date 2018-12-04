@@ -48,6 +48,7 @@ class App extends Component {
 					PPG: {this.state.currentPlayer.pts} APG: {this.state.currentPlayer.ast}
           RPG: {this.state.currentPlayer.reb}
           <button onClick={()=> this.addPlayer()}>Add Player</button>
+          <button>See all Stats</button>
 				</div>
 				<button onClick={() => this.hideStats()}>X</button>
 			</div>
