@@ -27,6 +27,7 @@ app.use(session({
   .catch(err => console.log(err))
 
 app.post('/api/add-player', controller.addPlayer)
+app.post('/api/create-user', controller.createUser)
 
   const port = process.env.SERVER_PORT || 3002
 
